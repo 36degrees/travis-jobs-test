@@ -14,7 +14,9 @@ script: ./test.sh
 jobs:
   include:
     - stage: deploy
+      name: "Release on GitHub 🚀"
       os: linux
+      script: echo "Releasing to GitHub..."
       deploy:
       - provider: script
         script: ./deploy.sh
