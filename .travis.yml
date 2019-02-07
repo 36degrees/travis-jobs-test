@@ -1,14 +1,23 @@
+language: node_js
+
+node_js:
+  - "10"
+  - "8"
+
 os:
 - linux
 - osx
 - windows
 
+script: ./test.sh
+
 jobs:
   include:
-    - stage: test
-      script: ./test.sh
     - stage: deploy
-      script: ./deploy.sh
-      on: master
+      os: linux
+      deploy:
+      - provider: script
+        script: ./deploy.sh
+        on: master
       env:
         - secure: "o+xF6HO5Q7gtnxR0fxmAvs3C54zoPzOrse7lsrDVLERuK9o+khHY8dVK4Axj8CHw0VE3fpfuotCq3VpeGuWeAzQ0kg0GOnubwAXRV123YjnfrLTiX5VMCTykuuYejX0iiU25RVbIwqp3hWtjT77VoUAeLYChDJT+pQs7+LfcVJDX3fMd53jbjaWEXrvJuF0AY/IWW+mJELt530HTcjNxhuJpfj8Ugn2rKTNEXE/EPtnXPOa/KvKdpQLZV+Yvk4bB6yXZAzwRSIgPpYtb/eb6MawXan8hmMtWZsEauwvpH+ukfSZnqShkeXNSAViJUwyxo4JxXXx9MhA+0FFg9KnlA6WahBrbr04zStXWoNFyV4VaCevP9RjaNpV4cl7dLyq/CzIZlsFMQjpdLMVGgVvDvgdJSfKrwMdoG8/xsdP3NPnwvpgwtpCUfZe68b8Rc9yZJBgZO25TUpXz6iiHa9MDlx8hEKciwCv8c0AfZt7mwd4efcxKkKZMuEN2vNrE3IGbER5BL0sB9BiOCWVVabQeKSC2RDBon6bfs0WtNoBr8d/vyfCgDp26gFi9VQoh8MgG2eD7XPgCFLSYG9Mw+IBmxk2AtktFYnfMK/yB2bmPFo5zm0MjynjB4ZYGNxZG3iXNpQfm/k/nMoDDME8Oqm4DADZbO0Xhrt1kxSIZD065GmU="
