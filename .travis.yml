@@ -1,11 +1,12 @@
+os:
+- osx
+- windows
+- linux
+
 jobs:
   include:
     - stage: test
       script: ./test.sh
-      os:
-      - osx
-      - windows
-      - linux
     - stage: deploy
       script: ./deploy.sh
       on: master
